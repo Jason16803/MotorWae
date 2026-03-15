@@ -5,10 +5,22 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
+
+
 MotorWae is a MERN stack vehicle inventory application built for the **WDV 463** course.
 It demonstrates a full-stack architecture with a separate frontend and backend deployed to modern cloud platforms.
 
 Users can add, view, update, and delete vehicles through a simple inventory dashboard.
+
+---
+
+## Live Deployment
+
+Frontend (Vercel)  
+https://motor-wae.vercel.app
+
+Backend API (Render)  
+https://motorwae.onrender.com
 
 ---
 
