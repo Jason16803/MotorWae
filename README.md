@@ -12,6 +12,16 @@ Users can add, view, update, and delete vehicles through a simple inventory dash
 
 ---
 
+## Live Deployment
+
+Frontend (Vercel)  
+https://motor-wae.vercel.app
+
+Backend API (Render)  
+https://motorwae.onrender.com
+
+---
+
 # Tech Stack
 
 **Frontend**
