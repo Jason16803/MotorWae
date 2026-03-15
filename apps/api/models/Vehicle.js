@@ -30,7 +30,7 @@ const vehicleSchema = new mongoose.Schema({
   },
   transmission: {
     type: String,
-    enum: ["Automatic", "Manual", "Electric"],
+    enum: ["Automatic", "Manual"],
     default: "Automatic",
   },
   drivetrain: {
