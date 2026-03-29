@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { FiPlus } from 'react-icons/fi'
-import { API_BASE } from '../api/config.js'
+import { API_BASE, authHeaders } from '../api/config.js'
 
 const EMPTY_FORM = {
   make: '',
@@ -29,7 +29,7 @@ function VehicleForm({ onAdded }) {
     try {
       const res = await fetch(`${API_BASE}/api/vehicles`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders(),
         body: JSON.stringify({
           ...form,
           year: Number(form.year),

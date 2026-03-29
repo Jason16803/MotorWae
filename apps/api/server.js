@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import vehicleRoutes from "./routes/vehicles.js";
+import authRoutes from "./routes/auth.js";
+import authMiddleware from "./middleware/auth.js";
 
 dotenv.config();
 
@@ -13,7 +15,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/vehicles", vehicleRoutes);
+// Public routes
+app.use("/api/auth", authRoutes);
+
+// Protected routes
+app.use("/api/vehicles", authMiddleware, vehicleRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "MotorWae API running" });

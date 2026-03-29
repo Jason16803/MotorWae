@@ -6,7 +6,7 @@ import {
   FiNavigation, FiDroplet, FiSettings, FiRotateCw,
 } from 'react-icons/fi'
 import VehicleForm from '../components/VehicleForm.jsx'
-import { API_BASE } from '../api/config.js'
+import { API_BASE, authHeaders } from '../api/config.js'
 
 const EMPTY_EDIT = {
   make: '', model: '', year: '', price: '', mileage: '', color: '',
@@ -28,7 +28,7 @@ function Inventory() {
 
   const fetchVehicles = async () => {
     try {
-      const res = await fetch(`${API_BASE}/api/vehicles`)
+      const res = await fetch(`${API_BASE}/api/vehicles`, { headers: authHeaders() })
       if (!res.ok) throw new Error('Failed to fetch vehicles')
       const data = await res.json()
       setVehicles(data)
@@ -52,7 +52,7 @@ function Inventory() {
   const handleDelete = async (id) => {
     if (!confirm('Delete this vehicle?')) return
     try {
-      const res = await fetch(`${API_BASE}/api/vehicles/${id}`, { method: 'DELETE' })
+      const res = await fetch(`${API_BASE}/api/vehicles/${id}`, { method: 'DELETE', headers: authHeaders() })
       if (!res.ok) throw new Error('Delete failed')
       setVehicles((prev) => prev.filter((v) => v._id !== id))
       if (paginated.length === 1 && page > 1) setPage((p) => p - 1)
@@ -89,7 +89,7 @@ function Inventory() {
     try {
       const res = await fetch(`${API_BASE}/api/vehicles/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders(),
         body: JSON.stringify({
           ...editForm,
           year: Number(editForm.year),
